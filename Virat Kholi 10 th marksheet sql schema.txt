@@ -1,0 +1,40 @@
+-- Create the students table
+CREATE TABLE students (
+    roll_no VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(100),
+    mother_name VARCHAR(100),
+    father_name VARCHAR(100),
+    dob DATE,
+    school_code VARCHAR(10),
+    school_name VARCHAR(255)
+);
+
+-- Create the student_marks table
+CREATE TABLE student_marks (
+    roll_no VARCHAR(10),
+    subject_code VARCHAR(10),
+    subject_name VARCHAR(100),
+    theory_marks INT,
+    practical_marks INT,
+    total_marks INT,
+    marks_in_words VARCHAR(50),
+    grade VARCHAR(2),
+    FOREIGN KEY (roll_no) REFERENCES students(roll_no)
+);
+
+-- Insert into students table
+INSERT INTO students (
+    roll_no, name, mother_name, father_name, dob, school_code, school_name
+) VALUES (
+    '6145109', 'Virat Kohli', 'Saroj Kohli', 'P N Kohli', '1988-11-05',
+    '01768', 'Saviour Convent Sec Sch A-2 Paschim Vihar ND'
+);
+
+-- Insert into student_marks table
+INSERT INTO student_marks VALUES
+('6145109', '101', 'English Comm.', NULL, NULL, 83, 'Eighty Three', 'A1'),
+('6145109', '085', 'Hindi Course-B', NULL, NULL, 75, 'Seventy Five', 'B1'),
+('6145109', '041', 'Mathematics', NULL, NULL, 51, 'Fifty One', 'C2'),
+('6145109', '086', 'Science & Tech.', 23, 32, 55, 'Fifty Five', 'C1'),
+('6145109', '087', 'Social Science', NULL, NULL, 81, 'Eighty One', 'A2'),
+('6145109', '165', 'Introductory I T', NULL, 74, 74, 'Seventy Four', 'C2');
